@@ -1,30 +1,32 @@
-import { HomeIcon, CameraIcon, Pencil2Icon } from "@radix-ui/react-icons"
-import { FaToolbox } from "react-icons/fa";
-import { FaTelegramPlane } from "react-icons/fa";
+import { RiHomeSmileLine } from "react-icons/ri";
+import { TbCameraBolt } from "react-icons/tb";
+import { HiPencilSquare } from "react-icons/hi2";
+import { TiShoppingBag } from "react-icons/ti";
+import { PiTelegramLogoBold } from "react-icons/pi";
 
 export const navItems = [
    {
-      icon: <HomeIcon />,
+      icon: <RiHomeSmileLine />,
       path: '/',
       navigation: 'Home'
    },
    {
-      icon: <CameraIcon />,
+      icon: <TbCameraBolt />,
       path: '/about',
       navigation: 'About'
    },
    {
-      icon: <Pencil2Icon />,
+      icon: <HiPencilSquare />,
       path: '/blog',
       navigation: 'Blog'
    },
    {
-      icon: <FaToolbox />,
+      icon: <TiShoppingBag />,
       path: '/project',
       navigation: 'Projects'
    },
    {
-      icon: <FaTelegramPlane />,
+      icon: <PiTelegramLogoBold />,
       path: '/contact',
       navigation: 'Contact'
    },

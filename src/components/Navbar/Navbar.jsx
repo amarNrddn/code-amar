@@ -5,7 +5,10 @@ import NavMobile from './NavMobile'
 const Navbar = () => {
    return (
       <nav>
-         <NavMobile />
+         
+         <div className="md:hidden">
+            <NavMobile />
+         </div>
       </nav>
    )
 }
