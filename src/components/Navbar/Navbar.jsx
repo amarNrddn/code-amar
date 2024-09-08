@@ -6,9 +6,7 @@ const Navbar = () => {
    return (
       <nav>
          
-         <div className="md:hidden">
-            <NavMobile />
-         </div>
+         <NavMobile />
       </nav>
    )
 }
