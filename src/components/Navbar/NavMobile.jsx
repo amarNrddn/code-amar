@@ -1,21 +1,22 @@
 import React, { useState } from 'react'
-import { navItems } from '../../contans/itemsNav'
 import { useNavigate } from 'react-router-dom';
 
 import Profile from '../atoms/Profile';
 import TogleDarkMode from '../atoms/TogleDarkMode';
+import TogleTheme from '../atoms/TogleTheme';
 
 import { HamburgerMenuIcon, Cross2Icon } from '@radix-ui/react-icons';
 
+import { navItems } from '../../contans/itemsNav'
 import { useTheme } from '../../contexts/ThemeProvider';
-import TogleTheme from '../atoms/TogleTheme';
+import { themeDark, themeLight } from '../../contans/styles';
 
 const NavMobile = () => {
    const navigate = useNavigate()
    const [togle, setTogle] = useState(false);
    const [active, setActive] = useState('/')
 
-   const {theme} = useTheme()
+   const { theme } = useTheme()
 
    const handleNavigation = (path) => {
       if (active !== path) {
@@ -26,7 +27,7 @@ const NavMobile = () => {
    }
 
    return (
-      <nav className={`px-3 py-3 ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-black' } md:hidden`}>
+      <nav className={`px-3 py-3 ${theme == 'dark' ? `${themeDark.className}` : `${themeLight.className}`} md:hidden`}>
          <div className="flex justify-between items-center">
             <Profile />
             <div className="flex items-center gap-3">
@@ -45,7 +46,7 @@ const NavMobile = () => {
                )}
             </div>
 
-            <div className={`${togle ? "flex " : "hidden"} px-3 z-50 bg-primary fixed top-16 left-0  my-2 min-w-full bg-white shadow-md navtrantition ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-black' }`}>
+            <div className={`${togle ? "flex " : "hidden"} px-3 z-50 bg-primary fixed top-16 left-0  my-2 min-w-full shadow-md navtrantition ${theme == 'dark' ? `${themeDark.className}` : `${themeLight.className}`}`}>
                {togle ? (
                   <div className='w-full'>
                      <ul>

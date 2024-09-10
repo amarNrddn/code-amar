@@ -33,7 +33,7 @@ const Home = () => {
                wrapper="span"
                speed={10}
                repeat={Infinity}
-               className=' font-bold text-gray-800 text-lg md:text-3xl '
+               className=' font-bold text-gray-800 text-xl md:text-3xl '
             />
             <div className="w-3 h-3 bg-green-600 rounded-full animate-pulseDot"></div>
          </div>
