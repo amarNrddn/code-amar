@@ -1,5 +1,4 @@
 import React from 'react'
-import { navItems } from '../../contans/itemsNav'
 import NavMobile from './NavMobile'
 import NavDestop from './NavDestop'
 

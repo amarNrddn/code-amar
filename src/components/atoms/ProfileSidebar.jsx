@@ -16,15 +16,15 @@ const ProfileSidebar = ({ isHovered }) => {
                </div>
                <motion.div
                   animate={{ width: isHovered ? 200 : 60 }}
-                  className="bg-neutral-50 flex flex-col justify-center items-center pt-5"
+                  className="flex flex-col justify-center items-center pt-5 border-black"
                >
                   <motion.img
                      initial={{ opacity: 0, x: -30, filter: 'blur(10px)' }}
                      animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
-                     transition={{ duration: 2, ease: 'easeInOut' }}
+                     transition={{ duration: 0.5, ease: 'easeInOut' }}
                      src={navprofil}
                      alt="Profile"
-                     className="w-16 h-16 rounded-full object-cover"
+                     className="w-20 h-20 rounded-full object-cover"
                   />
                   <div className="mt-2 flex items-center">
                      <span className="whitespace-nowrap text-lg font-semibold">Amar Nuruddin</span>

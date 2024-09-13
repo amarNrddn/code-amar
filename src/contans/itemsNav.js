@@ -1,6 +1,6 @@
 import { RiHomeSmileLine } from "react-icons/ri";
 import { TbCameraBolt } from "react-icons/tb";
-import { HiPencilSquare } from "react-icons/hi2";
+import { LuPenLine } from "react-icons/lu";
 import { TiShoppingBag } from "react-icons/ti";
 import { PiTelegramLogoBold } from "react-icons/pi";
 
@@ -16,7 +16,7 @@ export const navItems = [
       navigation: 'About'
    },
    {
-      icon: <HiPencilSquare />,
+      icon: <LuPenLine />,
       path: '/blog',
       navigation: 'Blog'
    },
