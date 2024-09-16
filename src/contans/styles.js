@@ -1,5 +1,5 @@
 export const themeDark = {
-   className:'bg-gray-900 text-white'
+   className:'bg-black text-white'
 };
 
 export const themeLight = {

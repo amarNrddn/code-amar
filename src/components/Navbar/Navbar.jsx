@@ -5,7 +5,7 @@ import NavDestop from './NavDestop'
 const Navbar = () => {
    return (
       <nav>
-         <div className="hidden md:block">
+         <div className="hidden md:block md:fixed md:left-0 md:z-10">
             <NavDestop />
          </div>
          <NavMobile />

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { TypeAnimation } from 'react-type-animation'
 import { getApi } from '../../utils/fetch'
-import { HeartFilledIcon, DotFilledIcon } from '@radix-ui/react-icons'
+import { DotFilledIcon } from '@radix-ui/react-icons'
 
 const Home = () => {
    const [datas, setDatas] = useState([])

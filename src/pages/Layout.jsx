@@ -7,7 +7,7 @@ import Navbar from '../components/Navbar/Navbar'
 const Layout = () => {
    const { theme } = useTheme()
    return (
-      <div className={`md:flex md:justify-center ${theme == 'dark' ? `${themeDark.className}` : `${themeLight.className}`}`}>
+      <div className={`md:flex md:justify-center ${theme === 'dark' ? `${themeDark.className}` : `${themeLight.className}`}`}>
          <Navbar />
          <div className="px-3 md:max-w-xl md:flex md:justify-center md:items-center lg:max-w-3xl">
             <Outlet />

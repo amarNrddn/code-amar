@@ -1,0 +1,10 @@
+.bgsidebar {
+   background-image: url('../../assets/bg-sidebar.jpg');
+   background-size: cover;
+   background-position: center;
+   border-radius: 20px 20px 20px 20px;
+   height: 50%;
+   width: 100%;
+   position: absolute;
+   top: 10px;
+}

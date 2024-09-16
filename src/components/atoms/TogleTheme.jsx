@@ -10,9 +10,9 @@ const TogleTheme = () => {
    return (
       <button onClick={toggleTheme}>
          {theme === 'light' ? (
-            <CiLight />
+            <CiLight className='md:text-white text-2xl font-bold' />
          ) : (
-            <MdDarkMode />
+            <MdDarkMode className='text-2xl font-bold' />
          )}
       </button>
    )
