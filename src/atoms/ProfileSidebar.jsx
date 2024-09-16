@@ -1,10 +1,10 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { navprofil } from '../../assets'
+import { navprofil } from '../assets'
 import { TbRosetteDiscountCheckFilled } from 'react-icons/tb'
 import TogleTheme from './TogleTheme'
-import '../../components/Navbar/style.css'
-import { useTheme } from '../../contexts/ThemeProvider'
+import '../components/Navbar/style.css'
+import { useTheme } from '../contexts/ThemeProvider'
 
 const ProfileSidebar = ({ isHovered }) => {
    const { theme } = useTheme()

@@ -1,5 +1,5 @@
 import React from 'react'
-import { navprofil } from '../../assets'
+import { navprofil } from '../assets'
 import { TbRosetteDiscountCheckFilled } from 'react-icons/tb'
 
 const Profile = () => {

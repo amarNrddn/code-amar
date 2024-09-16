@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { TypeAnimation } from 'react-type-animation'
-import { getApi } from '../../utils/fetch'
+import { getApi } from '../utils/fetch'
 import { DotFilledIcon } from '@radix-ui/react-icons'
 
 const Home = () => {

@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
-import Profile from '../atoms/Profile';
-import TogleDarkMode from '../atoms/TogleDarkMode';
-import TogleTheme from '../atoms/TogleTheme';
+import Profile from '../../atoms/Profile';
+// import TogleDarkMode from '../../atoms/TogleDarkMode';
+import TogleTheme from '../../atoms/TogleTheme';
 
 import { HamburgerMenuIcon, Cross2Icon } from '@radix-ui/react-icons';
 
@@ -27,7 +27,7 @@ const NavMobile = () => {
    }
 
    return (
-      <nav className={`px-3 py-3 ${theme == 'dark' ? `${themeDark.className}` : `${themeLight.className}`} md:hidden`}>
+      <nav className={`px-3 py-3 ${theme === 'dark' ? `${themeDark.className}` : `${themeLight.className}`} md:hidden`}>
          <div className="flex justify-between items-center">
             <Profile />
             <div className="flex items-center gap-3">
@@ -46,7 +46,7 @@ const NavMobile = () => {
                )}
             </div>
 
-            <div className={`${togle ? "flex " : "hidden"} px-3 z-50 bg-primary fixed top-16 left-0  my-2 min-w-full shadow-md navtrantition ${theme == 'dark' ? `${themeDark.className}` : `${themeLight.className}`}`}>
+            <div className={`${togle ? "flex " : "hidden"} px-3 z-50 bg-primary fixed top-16 left-0  my-2 min-w-full shadow-md navtrantition ${theme === 'dark' ? `${themeDark.className}` : `${themeLight.className}`}`}>
                {togle ? (
                   <div className='w-full'>
                      <ul>

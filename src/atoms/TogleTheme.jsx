@@ -3,7 +3,7 @@ import React from 'react'
 import { MdDarkMode } from 'react-icons/md'
 import { CiLight } from "react-icons/ci";
 
-import { useTheme } from '../../contexts/ThemeProvider'
+import { useTheme } from '../contexts/ThemeProvider'
 
 const TogleTheme = () => {
    const { theme, toggleTheme } = useTheme()
