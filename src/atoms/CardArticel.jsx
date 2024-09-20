@@ -1,19 +1,25 @@
 import React from 'react'
-import { thumbnailcard } from '../assets'
 
-const CardArticel = () => {
+const CardArticel = ({ articels }) => {
+
    return (
-      <div className="w-52 bg-white rounded-lg overflow-hidden flex-shrink-0">
-         <img
-            src={thumbnailcard}
-            alt="thumbnail"
-            className="w-full h-28 rounded-md object-cover"
-         />
-         <div className="">
-            <h2 className=" font-semibold  line-clamp-1 text-gray-500">Membatasi lebar maksimum dari card agar konsisten. Kamu bisa menyesuaikan</h2>
-            <p className="text-gray-400 text-xs">August 04, 2024</p>
-         </div>
-      </div>
+      <>
+         {articels.map((item) => {
+            return (
+               <div key={item} className="w-52 rounded-lg overflow-hidden flex-shrink-0">
+                  <img
+                     src={`http://localhost:8888/${item.thumbnail}`}
+                     alt="thumbnail"
+                     className="w-full h-28 rounded-md object-cover"
+                  />
+                  <div className="mt-2">
+                     <h2 className="font-semibold text-sm overflow-hidden whitespace-nowrap text-ellipsis text-gray-500">{item.title}</h2>
+                     <p className="text-gray-400 text-xs">August 04, 2024</p>
+                  </div>
+               </div>
+            )
+         })}
+      </>
    )
 }
 

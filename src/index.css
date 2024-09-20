@@ -12,7 +12,7 @@ body {
    font-family: 'Roboto';
 }
 
-.non-scrole::-webkit-scrollbar{
+.non-scrole::-webkit-scrollbar {
    display: none;
    scroll-behavior: smooth;
 }

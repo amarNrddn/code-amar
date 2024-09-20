@@ -5,6 +5,7 @@ import { TbRosetteDiscountCheckFilled } from 'react-icons/tb'
 import TogleTheme from './TogleTheme'
 import '../components/Navbar/style.css'
 import { useTheme } from '../contexts/ThemeProvider'
+import { themeDark, themeLight } from '../contans/styles'
 
 const ProfileSidebar = ({ isHovered }) => {
    const { theme } = useTheme()
@@ -13,7 +14,7 @@ const ProfileSidebar = ({ isHovered }) => {
          {isHovered ? (
             <div className="relative">
                <div className="bgsidebar">
-                  <div className={`bg-white w-24 h-8 rounded-md ${theme === 'dark' ? 'bg-black' : ''}`}></div>
+                  <div className={`w-24 h-8 rounded-md ${theme === 'dark' ? themeDark.className : 'bg-white'}`}></div>
                </div>
                <div className="pl-4 flex items-center absolute left-[-4px] top-[-3px]">
                   <div className="mt-4 max-w-[100px] px-2 py-1 flex items-center gap-1 border-2 rounded-xl">
