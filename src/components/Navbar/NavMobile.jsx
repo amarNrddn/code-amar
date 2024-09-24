@@ -31,7 +31,6 @@ const NavMobile = () => {
          <div className="flex justify-between items-center">
             <Profile />
             <div className="flex items-center gap-3">
-               {/* <TogleDarkMode /> */}
                <TogleTheme />
                {togle ? (
                   <Cross2Icon
@@ -53,7 +52,7 @@ const NavMobile = () => {
                         {navItems.map((item, i) => (
                            <li
                               key={i}
-                              className={`text-lg flex items-center gap-2 mb-4 pl-2 ${active === item.path ? 'bg-gray-500 py-2 rounded-md' : ''}`}
+                              className={`text-lg flex items-center gap-2 mb-4 pl-2 ${theme === 'dark' ? active === item.path ? 'bg-darkPrimary py-2 rounded-md' : '' : active === item.path ? 'bg-gray-200 py-2 rounded-md' : ''} `}
                               onClick={() => handleNavigation(item.path)}
                            >
                               <p className='text-2xl font-semibold'>{item.icon}</p>

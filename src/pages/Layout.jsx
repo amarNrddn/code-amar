@@ -9,7 +9,7 @@ const Layout = () => {
    return (
       <div className={`md:flex md:justify-center ${theme === 'dark' ? `${themeDark.className}` : `${themeLight.className}`}`}>
          <Navbar />
-         <div className="px-3 min-h-screen relative md:max-w-xl md:flex md:justify-center md:items-center lg:w-3xl">
+         <div className="px-5 min-h-screen relative md:max-w-xl md:flex md:justify-center md:items-center lg:w-3xl">
             <Outlet />
          </div>
       </div>

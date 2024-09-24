@@ -1,18 +1,26 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { Route, Routes } from 'react-router-dom'
-import RouteAbout from './RouteAbout'
 import Layout from '../pages/Layout'
-import Home from '../pages/Home'
+
+const Home = React.lazy(() => import('../pages/Home'))
+const RouteAbout = React.lazy(() => import('./RouteAbout'))
 
 const RouteApp = () => {
    return (
       <Routes>
-         <Route path='/' element={<Layout />} >
-            <Route index element={<Home />   } />
-            <Route path='/about' element={<RouteAbout />} />
+         <Route path='/' element={<Layout />}>
+            <Route index element={
+               <Suspense >
+                  <Home />
+               </Suspense>
+            } />
+            <Route path='/about' element={
+               <Suspense >
+                  <RouteAbout />
+               </Suspense>
+            } />
          </Route>
-      </Routes >
-
+      </Routes>
    )
 }
 

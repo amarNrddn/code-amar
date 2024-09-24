@@ -98,7 +98,6 @@ const NavDestop = () => {
                      );
                   })}
                </ul>
-
             </div>
          </motion.div>
       </nav>

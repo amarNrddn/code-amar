@@ -7,6 +7,10 @@ module.exports = {
       fontFamily: {
         roboto: ['Roboto', 'sans-serif']
       },
+      colors: {
+        darkPrimary: "#333",
+        darkSecondary: "#444",
+      },
       keyframes: {
         pulseDot: {
           '0%, 100%': { transform: 'scale(1)', opacity: '1' },
