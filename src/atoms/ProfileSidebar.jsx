@@ -5,7 +5,7 @@ import { TbRosetteDiscountCheckFilled } from 'react-icons/tb'
 import TogleTheme from './TogleTheme'
 import '../components/Navbar/style.css'
 import { useTheme } from '../contexts/ThemeProvider'
-import { themeDark, themeLight } from '../contans/styles'
+import { themeDark } from '../contans/styles'
 
 const ProfileSidebar = ({ isHovered }) => {
    const { theme } = useTheme()

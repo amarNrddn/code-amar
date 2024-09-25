@@ -6,7 +6,7 @@ const CardArticel = ({ articels }) => {
       <>
          {articels.map((item) => {
             return (
-               <div key={item} className="w-52 rounded-lg overflow-hidden flex-shrink-0">
+               <div key={item.id} className="w-52 rounded-lg overflow-hidden flex-shrink-0">
                   <img
                      src={`http://localhost:8888/${item.thumbnail}`}
                      alt="thumbnail"

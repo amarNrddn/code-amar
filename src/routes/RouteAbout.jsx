@@ -1,6 +1,7 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import About from '../pages/About'
+
+const About = React.lazy(() => import("../pages/About"))
 
 const RouteAbout = () => {
    return (

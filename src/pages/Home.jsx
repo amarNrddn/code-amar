@@ -5,15 +5,19 @@ import { getApi } from '../utils/fetch'
 
 import Border from '../atoms/Border';
 import CardArticel from '../atoms/CardArticel';
+import Loading from '../atoms/Loading';
+import DotAnimation from '../atoms/DotAnimation';
+import CardService from '../atoms/CardService';
+
 import { useTheme } from '../contexts/ThemeProvider'
 import { bgDark, bgWhite, textLight, textPrimaryDark } from '../contans/styles'
 
 import { DotFilledIcon } from '@radix-ui/react-icons'
 import { LuCalendarHeart } from "react-icons/lu";
 import { FcAdvertising } from "react-icons/fc";
+import { RiServiceFill } from "react-icons/ri";
 import { motion } from 'framer-motion'
-import Services from './Services';
-import Loading from '../atoms/Loading';
+
 
 const Home = () => {
    const { theme } = useTheme()
@@ -69,7 +73,7 @@ const Home = () => {
             <Loading />
          ) : (
             <motion.div
-               className='mt-4 md:mt-12'
+               className='mt-4 md:mt-12 mb-10'
                initial={{ opacity: 0, x: 100, scale: 0.8 }}
                animate={{ opacity: 1, x: 0, scale: 1 }}
                transition={{
@@ -96,7 +100,7 @@ const Home = () => {
                      repeat={Infinity}
                      className={`font-bold text-xl md:text-3xl`}
                   />
-                  <div className="w-3 h-3 bg-green-600 rounded-full animate-pulseDot"></div>
+                  <DotAnimation />
                </div>
 
                <div className="">
@@ -133,7 +137,7 @@ const Home = () => {
                      <div className="mt-4 md:flex md:justify-between md:items-center">
                         <p className={`text-md text-gray-500`}>Latest articles from dev.to</p>
                         <div className="p-[3px] bg-gradient-to-r from-red-500 via-yellow-500 to-blue-500 bg-[length:400%_400%] animate-rainbow rounded-lg mt-2 md:w-[335px]">
-                           <a href="https://marketplace.visualstudio.com/items?itemName=RobbOwen.synthwave-vscode" target='_blank'>
+                           <a href="https://marketplace.visualstudio.com/items?itemName=RobbOwen.synthwave-vscode" target='_blank' rel="noreferrer">
                               <button className={`w-full flex items-center gap-2 px-2  py-2 text-gray-500 rounded-md text-xs text-start md:justify-center ${theme === 'dark' ? `${bgDark.className} ${textLight.className}` : bgWhite.className}`}>
                                  <FcAdvertising className='text-xl -rotate-12' />
                                  SynthWave '84! visual studio code theme extension
@@ -151,8 +155,15 @@ const Home = () => {
                         <CardArticel articels={articels} />
                      </div>
                   </div>
-
-                  <Services />
+                  <Border className='my-8' />
+                  <div className="mb-5">
+                     <div className="flex items-center text-xl font-semibold gap-3 text-gray-600 ">
+                        <RiServiceFill />
+                        Services
+                     </div>
+                     <p className='text-gray-500 mt-2'>I can deliver the following services</p>
+                  </div>
+                  <CardService />
                </div>
             </motion.div >
          )}
