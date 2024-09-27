@@ -18,7 +18,6 @@ import { FcAdvertising } from "react-icons/fc";
 import { RiServiceFill } from "react-icons/ri";
 import { motion } from 'framer-motion'
 
-
 const Home = () => {
    const { theme } = useTheme()
    const [datas, setDatas] = useState([])
@@ -73,12 +72,11 @@ const Home = () => {
             <Loading />
          ) : (
             <motion.div
-               className='mt-4 md:mt-12 mb-10'
+               className='mt-4 md:mt-12 pb-10'
                initial={{ opacity: 0, x: 100, scale: 0.8 }}
                animate={{ opacity: 1, x: 0, scale: 1 }}
                transition={{
                   ease: 'easeInOut',
-                  duration: 0.5,
                   scale: {
                      type: 'spring',
                      stiffness: 300,
