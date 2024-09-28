@@ -11,5 +11,5 @@ export {
    thumbnailcard,
    webdev,
    mobiledev,
-   uiux
+   uiux,
 }

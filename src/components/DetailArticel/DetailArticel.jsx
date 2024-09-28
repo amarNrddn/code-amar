@@ -4,13 +4,17 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { configs } from '../../configs'
 
 import { FaRegArrowAltCircleLeft } from "react-icons/fa";
+
 import LoadingImage from '../Skeleton/LoadingImage';
+import useLoading from '../../hooks/useLoading';
+import useFormatDate from '../../hooks/formatDate';
 
 const DetailArticel = () => {
    const { id } = useParams()
-   const [artikels, setArtikels] = useState([])
-   const [isLoading, setIsLoading] = useState(true)
    const navigate = useNavigate()
+   const [artikels, setArtikels] = useState([])
+   const [isLoading, handleLoad] = useLoading()
+   const formateDate = useFormatDate(artikels.createdAt)
 
    const getArtikel = async () => {
       try {
@@ -26,29 +30,24 @@ const DetailArticel = () => {
       navigate(-1)
    }
 
-   const handleLoad = () => {
-      setTimeout(() => {
-         setIsLoading(false)
-
-      }, 4000)
-   }
-
    useEffect(() => {
       getArtikel()
    }, [])
 
    return (
-      <div className='mt-5'>
+      <div className='pt-9'>
          <button
             className='flex items-center gap-2'
             onClick={handleBack}
          >
-            <FaRegArrowAltCircleLeft />
-            Back
+            <FaRegArrowAltCircleLeft className='text-xl' />
+            <p className='text-gray-500'>Back</p>
          </button>
-         <p>{artikels.title}</p>
-         {isLoading && <LoadingImage />}
-         <div className="w-full h-36 md:h-80 overflow-hidden">
+
+         <h1 className='text-xl mt-5 font-semibold' >{artikels.title}</h1>
+         <p>{formateDate}</p>
+         <div className="w-full h-36 md:h-80 overflow-hidden relative">
+            {isLoading && <LoadingImage />}
             <img
                className={`w-full h-full object-cover transition-transform duration-500 hover:scale-110 ${isLoading ? 'hidden' : 'block'}`}
                src={`${configs.api_host_dev}/${artikels.thumbnail}`}
