@@ -10,7 +10,7 @@ export const itemServices = [
    {
       thumbnail: mobiledev,
       title: "Mobile Development",
-      des: "Create smooth and cross-platform mobile applications using React Native.",
+      des: "Create smooth and cross-platform mobile applications using Kotlin.",
       tech: 'coding'
    },
    {

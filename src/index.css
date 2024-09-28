@@ -42,16 +42,23 @@ body {
 
 @keyframes borderAnimation {
    0% {
-     clip-path: inset(0 100% 0 0); /* Awal dari kanan */
+      clip-path: inset(0 100% 0 0);
+      /* Awal dari kanan */
    }
+
    25% {
-     clip-path: inset(0 0 0 0); /* Menutupi seluruh card */
+      clip-path: inset(0 0 0 0);
+      /* Menutupi seluruh card */
    }
+
    75% {
-     clip-path: inset(0 0 0 0); /* Tetap menutupi seluruh card */
+      clip-path: inset(0 0 0 0);
+      /* Tetap menutupi seluruh card */
    }
+
    100% {
-     clip-path: inset(0 100% 0 0); /* Kembali ke posisi awal */
+      clip-path: inset(0 100% 0 0);
+      /* Kembali ke posisi awal */
    }
- }
- 
+}
+

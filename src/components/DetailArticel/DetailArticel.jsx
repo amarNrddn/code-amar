@@ -8,6 +8,8 @@ import { FaRegArrowAltCircleLeft } from "react-icons/fa";
 import LoadingImage from '../Skeleton/LoadingImage';
 import useLoading from '../../hooks/useLoading';
 import useFormatDate from '../../hooks/formatDate';
+import BorderDot from '../../atoms/BorderDot';
+import CodeSinippet from '../../atoms/CodeSinippet';
 
 const DetailArticel = () => {
    const { id } = useParams()
@@ -35,7 +37,7 @@ const DetailArticel = () => {
    }, [])
 
    return (
-      <div className='pt-9'>
+      <div className='pt-9 pb-5'>
          <button
             className='flex items-center gap-2'
             onClick={handleBack}
@@ -45,9 +47,9 @@ const DetailArticel = () => {
          </button>
 
          <h1 className='text-xl mt-5 font-semibold' >{artikels.title}</h1>
-         <p>{formateDate}</p>
+         <p className='mt-5 text-sm text-gray-500 mb-4'>Published on {formateDate}</p>
+         <BorderDot className="mb-4" />
          <div className="w-full h-36 md:h-80 overflow-hidden relative">
-            {isLoading && <LoadingImage />}
             <img
                className={`w-full h-full object-cover transition-transform duration-500 hover:scale-110 ${isLoading ? 'hidden' : 'block'}`}
                src={`${configs.api_host_dev}/${artikels.thumbnail}`}
@@ -57,6 +59,7 @@ const DetailArticel = () => {
             />
          </div>
          <p>{artikels.content}</p>
+         <CodeSinippet code={artikels.code_snippet} />
       </div >
    )
 }
