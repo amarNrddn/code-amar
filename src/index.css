@@ -8,9 +8,9 @@
    scroll-behavior: smooth;
 }
 
-body {
-   font-family: 'Roboto';
-}
+html, body, label {
+   font-family: 'Roboto', sans-serif;
+ }
 
 .non-scrole::-webkit-scrollbar {
    display: none;

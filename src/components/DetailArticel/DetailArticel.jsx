@@ -4,8 +4,8 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { configs } from '../../configs'
 
 import { FaRegArrowAltCircleLeft } from "react-icons/fa";
+import { motion } from 'framer-motion';
 
-import LoadingImage from '../Skeleton/LoadingImage';
 import useLoading from '../../hooks/useLoading';
 import useFormatDate from '../../hooks/formatDate';
 import BorderDot from '../../atoms/BorderDot';
@@ -37,7 +37,18 @@ const DetailArticel = () => {
    }, [])
 
    return (
-      <div className='pt-9 pb-5'>
+      <motion.div className='pt-9 pb-5'
+         initial={{ opacity: 0, x: 100, scale: 0.8 }}
+         animate={{ opacity: 1, x: 0, scale: 1 }}
+         transition={{
+            ease: 'easeInOut',
+            scale: {
+               type: 'spring',
+               stiffness: 300,
+               damping: 20,
+            },
+         }}
+      >
          <button
             className='flex items-center gap-2'
             onClick={handleBack}
@@ -60,7 +71,7 @@ const DetailArticel = () => {
          </div>
          <p>{artikels.content}</p>
          <CodeSinippet code={artikels.code_snippet} />
-      </div >
+      </motion.div >
    )
 }
 

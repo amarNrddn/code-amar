@@ -1,39 +1,28 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { TypeAnimation } from 'react-type-animation'
 
 import { getApi } from '../utils/fetch'
 
 import Border from '../atoms/Border';
-import CardArticel from '../atoms/CardArticel';
 import Loading from '../atoms/Loading';
-import DotAnimation from '../atoms/DotAnimation';
-import CardService from '../atoms/CardService';
 
 import { useTheme } from '../contexts/ThemeProvider'
-import { bgDark, bgWhite, textLight, textPrimaryDark } from '../contans/styles'
+import { bgDark, bgWhite, textLight } from '../contans/styles'
 
-import { DotFilledIcon } from '@radix-ui/react-icons'
 import { LuCalendarHeart } from "react-icons/lu";
 import { FcAdvertising } from "react-icons/fc";
 import { RiServiceFill } from "react-icons/ri";
 import { motion } from 'framer-motion'
+import Bio from '../components/Bio/Bio';
+import RunText from '../atoms/RunText';
+
+const CardArticel = React.lazy(() => import('../atoms/CardArticel'))
+const CardService = React.lazy(() => import('../atoms/CardService'))
 
 const Home = () => {
    const { theme } = useTheme()
-   const [datas, setDatas] = useState([])
    const [articels, setArticels] = useState([])
    const [isLoading, setIsloading] = useState(true)
    const scrollContainerRef = useRef(null)
-
-   const handleGetDatas = async () => {
-      try {
-         setIsloading(true)
-         const res = await getApi('myjobs')
-         setDatas(res)
-      } catch (error) {
-         console.log(error)
-      }
-   }
 
    const loadDatasCard = async () => {
       try {
@@ -45,24 +34,37 @@ const Home = () => {
    }
 
    useEffect(() => {
-      handleGetDatas()
       loadDatasCard()
    }, [])
 
    useEffect(() => {
-      const scrollContainer = scrollContainerRef.current
+      const scrollContainer = scrollContainerRef.current;
 
-      if (scrollContainer) {
+      if (scrollContainer && articels.length > 0) {
+         let animationFrameId;
          const cardWidth = scrollContainer.firstChild?.offsetWidth || 0;
          let scrollAmount = cardWidth;
 
+         const smoothScroll = (direction) => {
+            scrollContainer.scrollBy({
+               left: direction * scrollAmount,
+               behavior: 'smooth'
+            });
+         };
+
          const scrollLeft = () => {
-            scrollContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            smoothScroll(1);
+
             setTimeout(() => {
-               scrollContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+               smoothScroll(-1);
             }, 2000);
          };
-         setTimeout(scrollLeft, 1000);
+         animationFrameId = requestAnimationFrame(() => setTimeout(scrollLeft, 1000));
+         return () => {
+            if (animationFrameId) {
+               cancelAnimationFrame(animationFrameId);
+            }
+         };
       }
    }, [articels])
 
@@ -84,46 +86,8 @@ const Home = () => {
                   },
                }}
             >
-               <div className="flex justify-between items-center mb-3">
-                  <TypeAnimation
-                     sequence={[
-                        `Hello Folks, I'm`,
-                        3000,
-                        `Hello Folks, I'm Amar Nuruddin`,
-                        3000,
-                        `Hello Folks, I'm Software Engineer`,
-                     ]}
-                     wrapper="span"
-                     speed={10}
-                     repeat={Infinity}
-                     className={`font-bold text-xl md:text-3xl`}
-                  />
-                  <DotAnimation />
-               </div>
-
-               <div className="">
-                  {datas.map((item) => {
-                     return (
-                        <div key={item.id} className=''>
-                           {item.Jobs.map((job) => (
-                              <p
-                                 key={job.id}
-                                 className='flex items-center gap-2 text-base text-gray-500'
-                              >
-                                 <DotFilledIcon className='w-4 h-4' />
-                                 {job.job}
-                              </p>
-                           ))}
-                           <div className='flex items-center gap-2 text-gray-500'>
-                              <DotFilledIcon className='w-4 h-4 ' />
-                              <p className='text-base'>Based {item.city} <span className='text-xs font-semibold'>ID</span></p>
-                           </div>
-                           <p className={`text-base text-pretty text-gray-700 mt-3 ${theme === 'dark' ? textLight.className : textPrimaryDark.className}`}>{item.about}</p>
-                        </div>
-                     )
-                  })}
-               </div>
-
+               <RunText />
+               <Bio />
                <div className="">
                   <Border className='my-8' />
                   <div className="">

@@ -1,6 +1,8 @@
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "./contexts/ThemeProvider";
-import RouteApp from "./routes/RouteApp";
+import React from "react";
+
+const RouteApp = React.lazy(() => import('./routes/RouteApp'))
 
 function App() {
   return (

@@ -18,10 +18,13 @@ const NavDestop = () => {
       setIsActive(path)
    }
 
+   const borderDark = theme === 'dark' ? `bg-gray-500` : `bg-gray-200`
+   const containerNav = theme === 'dark' ? `${themeDark.className} sidebar-shadow` : `${themeLight.className}`
+
    return (
       <nav className="absolute left-0 ">
          <motion.div
-            className={`h-screen ${theme === 'dark' ? `${themeDark.className} sidebar-shadow` : `${themeLight.className}`} rounded-tr-xl rounded-br-xl shadow-xl relative ${isHovered ? '' : 'pt-4'} `}
+            className={`h-screen ${containerNav} rounded-tr-xl rounded-br-xl shadow-xl relative ${isHovered ? '' : 'pt-4'} `}
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={() => setIsHovered(false)}
             animate={{ width: isHovered ? 200 : 64 }}
@@ -34,7 +37,7 @@ const NavDestop = () => {
                </div>
 
                <div className="px-4">
-                  <div className={`w-full h-0.5 rounded-lg mt-2 ${theme === 'dark' ? `bg-gray-500` : `bg-gray-200`}`}></div>
+                  <div className={`w-full h-0.5 rounded-lg mt-2 ${borderDark}`}></div>
                </div>
 
                <ul className={`space-y-4 ${isHovered ? 'px-4' : 'px-3'} pt-4`}>

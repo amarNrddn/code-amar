@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 import Profile from '../../atoms/Profile';
-// import TogleDarkMode from '../../atoms/TogleDarkMode';
 import TogleTheme from '../../atoms/TogleTheme';
 
 import { HamburgerMenuIcon, Cross2Icon } from '@radix-ui/react-icons';

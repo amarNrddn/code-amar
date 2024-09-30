@@ -10,7 +10,7 @@ import { themeDark } from '../contans/styles'
 const ProfileSidebar = ({ isHovered }) => {
    const { theme } = useTheme()
    return (
-      <div className="">
+      <>
          {isHovered ? (
             <div className="relative">
                <div className="bgsidebar">
@@ -42,6 +42,7 @@ const ProfileSidebar = ({ isHovered }) => {
                      src={navprofil}
                      alt="Profile"
                      className="w-20 h-20 rounded-full object-cover"
+                     loading='lazy'
                   />
                   <div className="mt-2 flex items-center">
                      <span className="whitespace-nowrap text-lg font-semibold">Amar Nuruddin</span>
@@ -51,9 +52,9 @@ const ProfileSidebar = ({ isHovered }) => {
                </motion.div>
             </div>
          ) : (
-            <img src={navprofil} alt="Profile" className="rounded-full w-10 h-10 object-cover" />
+            <img src={navprofil} alt="Profile" className="rounded-full w-10 h-10 object-cover" loading='lazy' />
          )}
-      </div>
+      </>
    )
 }
 
