@@ -25,8 +25,10 @@ const NavMobile = () => {
       }
    }
 
+   const containerNav = theme === 'dark' ? themeDark.className : themeLight.className
+
    return (
-      <nav className={`px-3 py-3 ${theme === 'dark' ? `${themeDark.className}` : `${themeLight.className}`} md:hidden`}>
+      <nav className={`px-3 py-3 ${containerNav} md:hidden`}>
          <div className="flex justify-between items-center">
             <Profile />
             <div className="flex items-center gap-3">

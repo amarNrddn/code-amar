@@ -1,22 +1,26 @@
-import React, { useMemo } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { getApi } from '../utils/fetch'
-import { configs } from '../configs'
+import { getApi } from '../../utils/fetch'
+import { configs } from '../../configs'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchOneArticel, fetchingArticel } from '../../redux/articel/action'
 
-const CardArticel = ({ articels }) => {
+const CardArticel = () => {
    const navigate = useNavigate()
+   const dispatch = useDispatch()
+   const artikel = useSelector((state) => state.articel)
+
+   useEffect(() => {
+      dispatch(fetchingArticel())
+   }, [dispatch])
 
    const getOneBlog = async (id) => {
-      try {
-         await getApi(`blog/${id}`)
-         navigate(`artikel/${id}`)
-      } catch (error) {
-         console.log(error)
-      }
+      dispatch(fetchOneArticel(id))
+      navigate(`artikel/${id}`)
    }
 
    const memoizedArticles = useMemo(() => {
-      return articels.map((item) => {
+      return artikel.data.map((item) => {
          const date = new Date(item.createdAt)
          const options = { year: 'numeric', month: 'long', day: '2-digit' }
          const formattedDate = new Intl.DateTimeFormat('id-ID', options).format(date)
@@ -42,7 +46,7 @@ const CardArticel = ({ articels }) => {
             </div>
          )
       })
-   }, [articels])
+   }, [artikel.data])
 
    return <>{memoizedArticles}</>
 }

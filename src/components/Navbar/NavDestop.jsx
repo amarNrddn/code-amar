@@ -6,6 +6,7 @@ import { themeDark, themeLight } from '../../contans/styles';
 import ProfileSidebar from '../../atoms/ProfileSidebar';
 import { useNavigate } from 'react-router-dom';
 import './style.css'
+import ItemNavDestop from './ItemNavDestop';
 
 const NavDestop = () => {
    const navigate = useNavigate()
@@ -41,65 +42,7 @@ const NavDestop = () => {
                </div>
 
                <ul className={`space-y-4 ${isHovered ? 'px-4' : 'px-3'} pt-4`}>
-                  {navItems.map((item, i) => {
-                     const isActiveItem = isActive === item.path;
-                     const darkThemeItemStyle = isHovered
-                        ? isActiveItem
-                           ? 'px-2 py-1 bg-[#444] pl-3 rounded-md text-white'
-                           : 'text-gray-500'
-                        : '';
-
-                     const lightThemeItemStyle = isHovered
-                        ? isActiveItem
-                           ? 'px-2 py-1 bg-gray-200 pl-3 rounded-md text-gray-500'
-                           : ''
-                        : '';
-
-                     const commonHoverStyle = isHovered
-                        ? 'px-2 py-1 hover:bg-[#444] hover:pl-3 rounded-md'
-                        : '';
-
-                     const commonLightHoverStyle = isHovered
-                        ? 'px-2 py-1 hover:bg-gray-200 hover:pl-3 rounded-md'
-                        : '';
-
-                     const darkThemeIconStyle = isHovered
-                        ? isActiveItem
-                           ? 'text-white'
-                           : ''
-                        : isActiveItem
-                           ? 'p-2 bg-[#333] text-white rounded-full'
-                           : 'p-2 bg-[#333] text-gray-500 rounded-full';
-
-                     const lightThemeIconStyle = isHovered
-                        ? ''
-                        : isActiveItem
-                           ? 'p-2 bg-gray-200 text-black rounded-full'
-                           : 'p-2 bg-gray-200 rounded-full';
-
-                     return (
-                        <li
-                           key={i}
-                           className={`flex items-center text-gray-500 space-x-4 cursor-pointer transition-all duration-300 ease-in-out ${theme === 'dark' ? darkThemeItemStyle : lightThemeItemStyle}  ${theme === 'dark' ? commonHoverStyle : commonLightHoverStyle}`}
-                           onClick={() => handleNavActive(item.path)}
-                        >
-                           <span
-                              className={`text-lg font-bold ${theme === 'dark' ? darkThemeIconStyle : lightThemeIconStyle}`}
-                           >
-                              {item.icon}
-                           </span>
-
-                           <motion.span
-                              initial={{ opacity: 0, x: 100 }}
-                              animate={{ opacity: isHovered ? 1 : 0, x: isHovered ? 0 : 100 }}
-                              transition={{ duration: 0.5, ease: 'easeInOut' }}
-                              className="whitespace-nowrap"
-                           >
-                              {item.navigation}
-                           </motion.span>
-                        </li>
-                     );
-                  })}
+                  <ItemNavDestop isActive={isActive} navItems={navItems} theme={theme} isHovered={isHovered} handleNavActive={handleNavActive} />
                </ul>
             </div>
          </motion.div>

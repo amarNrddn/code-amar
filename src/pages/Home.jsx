@@ -1,6 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react'
-
-import { getApi } from '../utils/fetch'
+import React, { Suspense, useEffect, useRef, } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 
 import Border from '../atoms/Border';
 import Loading from '../atoms/Loading';
@@ -12,35 +11,31 @@ import { LuCalendarHeart } from "react-icons/lu";
 import { FcAdvertising } from "react-icons/fc";
 import { RiServiceFill } from "react-icons/ri";
 import { motion } from 'framer-motion'
+
 import Bio from '../components/Bio/Bio';
 import RunText from '../atoms/RunText';
+import { fetchingArticel } from '../redux/articel/action';
+import LoadingInfinity from '../atoms/LoadingInfinity';
 
-const CardArticel = React.lazy(() => import('../atoms/CardArticel'))
-const CardService = React.lazy(() => import('../atoms/CardService'))
+const CardArticel = React.lazy(() => import('../components/CardArticel/CardArticel'))
+const CardService = React.lazy(() => import('../components/CardServices/CardService'))
 
 const Home = () => {
    const { theme } = useTheme()
-   const [articels, setArticels] = useState([])
-   const [isLoading, setIsloading] = useState(true)
    const scrollContainerRef = useRef(null)
 
-   const loadDatasCard = async () => {
-      try {
-         const loadData = await getApi('blog')
-         setArticels(loadData)
-      } catch (error) {
-         console.log(error)
-      } finally { setIsloading(false) }
-   }
+   const dispatch = useDispatch()
+   const artikel = useSelector((state) => state.articel)
+   const isLoading = useSelector((state) => state.articel.isLoading)
 
    useEffect(() => {
-      loadDatasCard()
-   }, [])
+      dispatch(fetchingArticel())
+   }, [dispatch])
 
    useEffect(() => {
       const scrollContainer = scrollContainerRef.current;
 
-      if (scrollContainer && articels.length > 0) {
+      if (scrollContainer && artikel.data.length > 0 && !isLoading) {
          let animationFrameId;
          const cardWidth = scrollContainer.firstChild?.offsetWidth || 0;
          let scrollAmount = cardWidth;
@@ -48,32 +43,33 @@ const Home = () => {
          const smoothScroll = (direction) => {
             scrollContainer.scrollBy({
                left: direction * scrollAmount,
-               behavior: 'smooth'
+               behavior: 'smooth',
             });
          };
 
          const scrollLeft = () => {
             smoothScroll(1);
-
             setTimeout(() => {
                smoothScroll(-1);
             }, 2000);
          };
+
          animationFrameId = requestAnimationFrame(() => setTimeout(scrollLeft, 1000));
+
          return () => {
             if (animationFrameId) {
                cancelAnimationFrame(animationFrameId);
             }
          };
       }
-   }, [articels])
+   }, [artikel.data.length, isLoading]);
 
    return (
       <>
          {isLoading ? (
             <Loading />
          ) : (
-            <motion.div
+            <motion.div 
                className='mt-4 md:mt-12 pb-10'
                initial={{ opacity: 0, x: 100, scale: 0.8 }}
                animate={{ opacity: 1, x: 0, scale: 1 }}
@@ -114,7 +110,13 @@ const Home = () => {
                         className="w-full flex overflow-x-auto gap-4 whitespace-nowrap non-scrole"
                         ref={scrollContainerRef}
                      >
-                        <CardArticel articels={articels} />
+                        <Suspense fallback={<LoadingInfinity />}>
+                           {artikel.data.length > 0 ? (
+                              <CardArticel />
+                           ) : (
+                              <p className='w-full text-center'>No articles available</p>
+                           )}
+                        </Suspense>
                      </div>
                   </div>
                   <Border className='my-8' />

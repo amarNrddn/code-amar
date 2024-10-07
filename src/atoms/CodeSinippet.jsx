@@ -1,11 +1,5 @@
 import React, { useState } from 'react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import css from 'react-syntax-highlighter/dist/cjs/languages/prism/css'
-import diff from 'react-syntax-highlighter/dist/cjs/languages/prism/diff'
-import javascript from 'react-syntax-highlighter/dist/cjs/languages/prism/javascript'
-import tsx from 'react-syntax-highlighter/dist/cjs/languages/prism/tsx'
-import typescript from 'react-syntax-highlighter/dist/cjs/languages/prism/typescript'
 import { a11yDark as themeColor } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 
 import { FaRegCopy } from "react-icons/fa";

@@ -4,9 +4,9 @@ module.exports = {
   content: ["./src/**/*.{html,js,jsx}"],
   theme: {
     extend: {
-      fontFamily: {
-        roboto: ['Roboto', 'sans-serif']
-      },
+      // fontFamily: {
+      //   roboto: ['Roboto', 'sans-serif']
+      // },
       colors: {
         darkPrimary: "#333",
         darkSecondary: "#444",

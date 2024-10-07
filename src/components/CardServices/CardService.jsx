@@ -1,6 +1,6 @@
 import React from 'react'
-import { itemServices } from '../contans/services'
-import { useTheme } from '../contexts/ThemeProvider'
+import { itemServices } from '../../contans/services'
+import { useTheme } from '../../contexts/ThemeProvider'
 
 const CardService = () => {
    const { theme } = useTheme()

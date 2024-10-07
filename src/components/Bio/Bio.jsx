@@ -1,28 +1,21 @@
-import React, { useEffect, useState, useMemo } from 'react'
-import { getApi } from '../../utils/fetch'
-import { DotFilledIcon } from '@radix-ui/react-icons'
-import { textPrimaryDark, textLight } from '../../contans/styles'
-import { useTheme } from '../../contexts/ThemeProvider'
+import React, { useEffect, useMemo } from 'react';
+import { DotFilledIcon } from '@radix-ui/react-icons';
+import { textPrimaryDark, textLight } from '../../contans/styles';
+import { useTheme } from '../../contexts/ThemeProvider';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchingBio } from '../../redux/bio/action';
 
 const Bio = () => {
-   const [datas, setDatas] = useState([])
-   const { theme } = useTheme()
-
-   const handleGetDatas = async () => {
-      try {
-         const res = await getApi('myjobs')
-         setDatas(res)
-      } catch (error) {
-         console.log(error)
-      }
-   }
+   const { theme } = useTheme();
+   const dispatch = useDispatch();
+   const bio = useSelector((state) => state.bio.data);
 
    useEffect(() => {
-      handleGetDatas()
-   }, [])
+      dispatch(fetchingBio());
+   }, [dispatch]);
 
    const memoizedData = useMemo(() => {
-      return datas.map((item) => (
+      return bio.map((item) => (
          <div key={item.id} className=''>
             {item.Jobs.map((job) => (
                <p
@@ -43,14 +36,14 @@ const Bio = () => {
                {item.about}
             </p>
          </div>
-      ))
-   }, [datas, theme])
+      ));
+   }, [bio, theme]);
 
    return (
       <div className="">
          {memoizedData}
       </div>
-   )
-}
+   );
+};
 
-export default Bio
+export default Bio;
