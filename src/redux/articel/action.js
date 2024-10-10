@@ -62,11 +62,11 @@ export const fetchingArticel = () => {
    }
 }
 
-export const fetchOneArticel = (id) => {
+export const fetchOneArticel = (slug) => {
    return async (dispatch) => {
       dispatch(startFetchingOneArticel())
       try {
-         const res = await getApi(`blog/${id}`)
+         const res = await getApi(`blog/${slug}`)
 
          dispatch(successFetchingOneArticel({ articel: res }))
       } catch (error) {

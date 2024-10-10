@@ -13,7 +13,7 @@ const RouteHome = () => {
           <Home />
         </Suspense>
       } />
-      <Route path='/artikel/:id' element={
+      <Route path='artikel/:slug' element={
         <Suspense>
           <DetailArticel fallback={<Loading />} />
         </Suspense>

@@ -16,7 +16,6 @@ const DetailArticel = () => {
    const [isLoading, handleLoad] = useLoading()
    const detailArtikel = useSelector((state) => state.articel.data)
    const formateDate = useFormatDate(detailArtikel.createdAt)
-   console.log(detailArtikel)
 
    const handleBack = () => {
       navigate(-1)

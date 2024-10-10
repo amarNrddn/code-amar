@@ -1,6 +1,5 @@
-import React, { useEffect, useMemo } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { getApi } from '../../utils/fetch'
 import { configs } from '../../configs'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchOneArticel, fetchingArticel } from '../../redux/articel/action'
@@ -9,14 +8,15 @@ const CardArticel = () => {
    const navigate = useNavigate()
    const dispatch = useDispatch()
    const artikel = useSelector((state) => state.articel)
+   console.log(artikel)
 
    useEffect(() => {
       dispatch(fetchingArticel())
    }, [dispatch])
 
-   const getOneBlog = async (id) => {
-      dispatch(fetchOneArticel(id))
-      navigate(`artikel/${id}`)
+   const getOneBlog = async (slug) => {
+      dispatch(fetchOneArticel(slug))
+      navigate(`artikel/${slug}`)
    }
 
    const memoizedArticles = useMemo(() => {
@@ -29,7 +29,7 @@ const CardArticel = () => {
             <div
                key={item.id}
                className="w-52 rounded-lg overflow-hidden flex-shrink-0 hover:cursor-pointer transform transition-transform duration-300 ease-in-out hover:scale-95"
-               onClick={() => getOneBlog(item.id)}
+               onClick={() => getOneBlog(item.slug)}
             >
                <div className="relative w-full h-28">
                   <img

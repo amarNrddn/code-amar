@@ -15,7 +15,7 @@ import { motion } from 'framer-motion'
 import Bio from '../components/Bio/Bio';
 import RunText from '../atoms/RunText';
 import { fetchingArticel } from '../redux/articel/action';
-import LoadingInfinity from '../atoms/LoadingInfinity';
+import LoadingCard from '../atoms/LoadingCard';
 
 const CardArticel = React.lazy(() => import('../components/CardArticel/CardArticel'))
 const CardService = React.lazy(() => import('../components/CardServices/CardService'))
@@ -69,7 +69,7 @@ const Home = () => {
          {isLoading ? (
             <Loading />
          ) : (
-            <motion.div 
+            <motion.div
                className='mt-4 md:mt-12 pb-10'
                initial={{ opacity: 0, x: 100, scale: 0.8 }}
                animate={{ opacity: 1, x: 0, scale: 1 }}
@@ -110,7 +110,7 @@ const Home = () => {
                         className="w-full flex overflow-x-auto gap-4 whitespace-nowrap non-scrole"
                         ref={scrollContainerRef}
                      >
-                        <Suspense fallback={<LoadingInfinity />}>
+                        <Suspense fallback={<LoadingCard />}>
                            {artikel.data.length > 0 ? (
                               <CardArticel />
                            ) : (
