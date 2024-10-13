@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { configs } from '../../configs'
 import { useDispatch, useSelector } from 'react-redux'
@@ -8,7 +8,6 @@ const CardArticel = () => {
    const navigate = useNavigate()
    const dispatch = useDispatch()
    const artikel = useSelector((state) => state.articel)
-   console.log(artikel)
 
    useEffect(() => {
       dispatch(fetchingArticel())

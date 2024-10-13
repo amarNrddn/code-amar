@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { configs } from '../../configs'
 import { useSelector } from 'react-redux'
@@ -9,17 +9,39 @@ import { motion } from 'framer-motion';
 import useLoading from '../../hooks/useLoading';
 import useFormatDate from '../../hooks/formatDate';
 import BorderDot from '../../atoms/BorderDot';
-import CodeSinippet from '../../atoms/CodeSinippet';
+import Introduction from './Introduction';
+import Content from './Content';
+import Instalation from './Instalation';
+import Code from './Code';
+import Description from './Description';
+import Tags from './Tags';
 
-const DetailArticel = () => {
+const ViewBlog = () => {
    const navigate = useNavigate()
    const [isLoading, handleLoad] = useLoading()
    const detailArtikel = useSelector((state) => state.articel.data)
    const formateDate = useFormatDate(detailArtikel.createdAt)
+   const [isTitleVisible, setIsTitleVisible] = useState(true);
 
    const handleBack = () => {
       navigate(-1)
    }
+
+   useEffect(() => {
+      const handleScroll = () => {
+         if (window.scrollY < 50) {
+            setIsTitleVisible(true);
+         } else {
+            setIsTitleVisible(false);
+         }
+      };
+
+      window.addEventListener('scroll', handleScroll);
+
+      return () => {
+         window.removeEventListener('scroll', handleScroll);
+      };
+   }, []);
 
    return (
       <motion.div className='pt-9 pb-5'
@@ -42,7 +64,14 @@ const DetailArticel = () => {
             <p className='text-gray-500'>Back</p>
          </button>
 
-         <h1 className='text-xl mt-5 font-semibold' >{detailArtikel.title}</h1>
+         <motion.h1
+            className='text-xl mt-9 font-semibold'
+            initial={{ y: -50, opacity: 0 }}
+            animate={isTitleVisible ? { y: 0, opacity: 1 } : { y: -50, opacity: 0 }}
+            transition={{ duration: 0.5 }}
+         >
+            {detailArtikel.title}
+         </motion.h1>
          <p className='mt-5 text-sm text-gray-500 mb-4'>Published on {formateDate}</p>
          <BorderDot className="mb-4" />
          <div className="w-full h-36 md:h-80 overflow-hidden relative">
@@ -54,10 +83,14 @@ const DetailArticel = () => {
                onLoad={handleLoad}
             />
          </div>
-         <p>{detailArtikel.content}</p>
-         <CodeSinippet code={detailArtikel.code_snippet} />
+         <Introduction />
+         <Content />
+         <Instalation />
+         <Code />
+         <Description />
+         <Tags />
       </motion.div >
    )
 }
 
-export default DetailArticel
+export default ViewBlog

@@ -6,40 +6,42 @@
   <rect x="0" y="0" width="200" height="30" fill="#fff" stroke="#333" stroke-width="2" stroke-linejoin="round"/>
   
   <!-- Mobile Buttons -->
-  <circle cx="15" cy="15" r="5" fill="#b0b0b0">
-    <animate attributeName="fill" values="#b0b0b0;#ff5f57;#b0b0b0" dur="2s" repeatCount="indefinite" />
+  <circle cx="15" cy="15" r="5" fill="#ff5f57"> <!-- Red -->
+    <animate attributeName="fill" values="#ff5f57;#ff5f57;#ff5f57" dur="2s" repeatCount="indefinite" />
   </circle>
-  <circle cx="35" cy="15" r="5" fill="#b0b0b0">
-    <animate attributeName="fill" values="#b0b0b0;#ffbd2e;#b0b0b0" dur="2s" repeatCount="indefinite" />
+  <circle cx="35" cy="15" r="5" fill="#ffbd2e"> <!-- Yellow -->
+    <animate attributeName="fill" values="#ffbd2e;#ffbd2e;#ffbd2e" dur="2s" repeatCount="indefinite" />
   </circle>
-  <circle cx="55" cy="15" r="5" fill="#b0b0b0">
-    <animate attributeName="fill" values="#b0b0b0;#28c840;#b0b0b0" dur="2s" repeatCount="indefinite" />
+  <circle cx="55" cy="15" r="5" fill="#28c840"> <!-- Green -->
+    <animate attributeName="fill" values="#28c840;#28c840;#28c840" dur="2s" repeatCount="indefinite" />
   </circle>
 
-  <!-- Profile Section (Top) -->
-  <circle cx="100" cy="70" r="30" fill="#aaa">
-    <animate attributeName="r" from="30" to="35" dur="1.5s" begin="0s" repeatCount="indefinite" values="30;35;30" />
-  </circle>
+  <!-- Profile Section (Top) with Circle to Square Animation -->
+  <rect x="70" y="45" width="60" height="60" fill="#b0b0b0" rx="30">
+    <animate attributeName="rx" from="30" to="0" dur="2s" repeatCount="indefinite" values="30;0;30" />
+  </rect>
 
   <!-- Placeholder Text Lines (Profile Name and Details) -->
-  <rect x="70" y="110" width="100" height="10" fill="#aaa" rx="5">
+  <rect x="70" y="110" width="100" height="10" fill="#b0b0b0" rx="5">
     <animate attributeName="width" from="100" to="90" dur="2s" repeatCount="indefinite" values="100;90;100" />
   </rect>
-  <rect x="70" y="130" width="80" height="10" fill="#aaa" rx="5" />
-  
-  <!-- Sidebar Text Lines -->
-  <rect x="20" y="160" width="150" height="10" fill="#aaa" rx="5" />
-  <rect x="20" y="180" width="130" height="10" fill="#aaa" rx="5" />
-  <rect x="20" y="200" width="100" height="10" fill="#aaa" rx="5" />
+  <rect x="70" y="130" width="80" height="10" fill="#b0b0b0" rx="5" />
 
-  <!-- Content Boxes -->
-  <rect x="20" y="230" width="160" height="30" fill="#aaa" rx="8">
-    <animate attributeName="y" from="230" to="235" dur="1.5s" repeatCount="indefinite" values="230;235;230" />
+  <!-- Sidebar Text Lines with Width Animation -->
+  <rect x="20" y="160" width="150" height="10" fill="#b0b0b0" rx="5">
+    <animate attributeName="width" from="150" to="160" dur="2s" repeatCount="indefinite" values="150;160;150" />
   </rect>
-  <rect x="20" y="270" width="160" height="30" fill="#aaa" rx="8">
-    <animate attributeName="y" from="270" to="275" dur="1.5s" repeatCount="indefinite" values="270;275;270" />
+  <rect x="20" y="180" width="130" height="10" fill="#b0b0b0" rx="5" />
+  <rect x="20" y="200" width="100" height="10" fill="#b0b0b0" rx="5" />
+
+  <!-- Content Boxes with Shape Transformation -->
+  <rect x="20" y="230" width="160" height="30" fill="#b0b0b0" rx="15">
+    <animate attributeName="rx" from="15" to="0" dur="1.5s" repeatCount="indefinite" values="15;0;15" />
   </rect>
-  <rect x="20" y="310" width="160" height="30" fill="#aaa" rx="8">
-    <animate attributeName="y" from="310" to="315" dur="1.5s" repeatCount="indefinite" values="310;315;310" />
+  <rect x="20" y="270" width="160" height="30" fill="#b0b0b0" rx="15">
+    <animate attributeName="rx" from="15" to="0" dur="1.5s" repeatCount="indefinite" values="15;0;15" />
+  </rect>
+  <rect x="20" y="310" width="160" height="30" fill="#b0b0b0" rx="15">
+    <animate attributeName="rx" from="15" to="0" dur="1.5s" repeatCount="indefinite" values="15;0;15" />
   </rect>
 </svg>

@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import Loading from '../atoms/Loading'
 
 const Home = React.lazy(() => import('../pages/Home'))
-const DetailArticel = React.lazy(() => import('../components/DetailArticel/DetailArticel'))
+const ViewBlog = React.lazy(() => import('../components/Blog/ViewBlog'))
 
 const RouteHome = () => {
   return (
@@ -15,7 +15,7 @@ const RouteHome = () => {
       } />
       <Route path='artikel/:slug' element={
         <Suspense>
-          <DetailArticel fallback={<Loading />} />
+          <ViewBlog fallback={<Loading />} />
         </Suspense>
       } />
     </Routes>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 import Profile from '../../atoms/Profile';
@@ -14,6 +14,7 @@ const NavMobile = () => {
    const navigate = useNavigate()
    const [togle, setTogle] = useState(false);
    const [active, setActive] = useState('/')
+   const navRef = useRef(null);
 
    const { theme } = useTheme()
 
@@ -24,6 +25,19 @@ const NavMobile = () => {
          setTogle(false)
       }
    }
+
+   useEffect(() => {
+      const handleClickOutside = (event) => {
+         if (navRef.current && !navRef.current.contains(event.target)) {
+            setTogle(false); // Menutup navbar jika klik di luar
+         }
+      };
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => {
+         document.removeEventListener('mousedown', handleClickOutside);
+      };
+   }, []);
+
 
    const containerNav = theme === 'dark' ? themeDark.className : themeLight.className
 
@@ -46,7 +60,9 @@ const NavMobile = () => {
                )}
             </div>
 
-            <div className={`${togle ? "flex " : "hidden"} px-3 z-50 bg-primary fixed top-16 left-0  my-2 min-w-full shadow-md navtrantition ${theme === 'dark' ? `${themeDark.className}` : `${themeLight.className}`}`}>
+            <div
+               ref={navRef}
+               className={`${togle ? "flex " : "hidden"} px-3 z-50 bg-primary fixed top-16 left-0  my-2 min-w-full shadow-md navtrantition ${theme === 'dark' ? `${themeDark.className}` : `${themeLight.className}`}`}>
                {togle ? (
                   <div className='w-full'>
                      <ul>
