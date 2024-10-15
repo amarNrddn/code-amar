@@ -7,7 +7,7 @@ import {
 
 
 import { thunk } from "redux-thunk"
-import articelReducer from './articel/reducer'
+import articelReducer from './blog/reducer'
 import bioReducer from './bio/reducer'
 
 const composerEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

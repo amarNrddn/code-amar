@@ -10,9 +10,10 @@ import { motion } from 'framer-motion'
 
 import Bio from '../components/Bio/Bio';
 import RunText from '../atoms/RunText';
-import { fetchingArticel } from '../redux/articel/action';
+import { fetchingArticel } from '../redux/blog/action';
 import LoadingCard from '../atoms/LoadingCard';
 import ButtonThemeVsCode from '../atoms/ButtonThemeVsCode';
+import HeaderSection from '../atoms/HeaderSection';
 
 const CardArticel = React.lazy(() => import('../components/CardArticel/CardArticel'))
 const CardService = React.lazy(() => import('../components/CardServices/CardService'))
@@ -83,10 +84,10 @@ const Home = () => {
                <div className="">
                   <Border className='my-8' />
                   <div className="">
-                     <div className='flex items-center text-xl font-semibold gap-3 text-gray-600'>
+                     <HeaderSection>
                         <LuCalendarHeart />
                         <p>Latest Articles</p>
-                     </div>
+                     </HeaderSection>
 
                      <div className="mt-4 md:flex md:justify-between md:items-center">
                         <p className={`text-md text-gray-500`}>Latest articles from dev.to</p>
@@ -111,10 +112,10 @@ const Home = () => {
 
                   <Border className='my-8' />
                   <div className="mb-5">
-                     <div className="flex items-center text-xl font-semibold gap-3 text-gray-600 ">
+                     <HeaderSection>
                         <RiServiceFill />
                         Services
-                     </div>
+                     </HeaderSection>
                      <p className='text-gray-500 mt-2'>I can deliver the following services</p>
                   </div>
                   <CardService />

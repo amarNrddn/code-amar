@@ -16,8 +16,8 @@ const Layout = () => {
 
    const layoutClassName = `${theme === 'dark' ? themeDark.className : themeLight.className}`;
    const containerClassName = hiddenNavPath
-      ? "px-5 min-h-screen relative md:max-w-4xl md:flex md:justify-center md:items-center lg:w-3xl"
-      : "px-5 min-h-screen relative md:max-w-xl md:flex md:justify-center md:items-center lg:max-w-3xl";
+      ? "px-5 relative md:max-w-4xl md:flex md:justify-center md:items-center lg:w-3xl"
+      : "px-5 relative md:max-w-xl md:flex md:justify-center md:items-center lg:max-w-3xl";
 
    return (
       <div className={`md:flex md:justify-center ${layoutClassName}`}>

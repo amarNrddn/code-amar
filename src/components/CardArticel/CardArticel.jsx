@@ -2,7 +2,7 @@ import React, { useEffect, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { configs } from '../../configs'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchOneArticel, fetchingArticel } from '../../redux/articel/action'
+import { fetchOneArticel, fetchingArticel } from '../../redux/blog/action'
 
 const CardArticel = () => {
    const navigate = useNavigate()

@@ -10,7 +10,7 @@ const Description = () => {
       ) : (
       <div className='mt-4'>
         <h1 className='font-bold'>Penjelasan</h1>
-        <p className=''>{description.elucidation}</p>
+        <p className='mt-4'>{description.elucidation}</p>
       </div>
       )}
     </>
