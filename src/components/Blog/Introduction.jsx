@@ -10,7 +10,7 @@ const Introduction = () => {
          ) : (
             <div className='mt-9'>
                <h1 className='font-bold'>Introduction</h1>
-               <p className="mt-4 text-base">
+               <p className="mt-4 text-base leading-loose">
                   {introduction.introduction}
                </p>
             </div>

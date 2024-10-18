@@ -6,7 +6,7 @@ const Content = () => {
    return (
       <div className='mt-6'>
          <h1 className='font-bold'>{conten.titleconten}</h1>
-         <p className='mt-4 text-base'>{conten.content}</p>
+         <p className='mt-4 text-base leading-loose'>{conten.content}</p>
       </div>
    )
 }
