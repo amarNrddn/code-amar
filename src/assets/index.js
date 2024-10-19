@@ -16,6 +16,9 @@ import bootstraps from './bootstrap-5-1.svg'
 import github from './github-icon-1.svg'
 import instagram from './instagram-2016-5.svg'
 import linkedin from './linkedin-icon-2.svg'
+import redux from './redux.svg'
+import express from './express-109.svg'
+import mongodb from './mongodb-icon-1-1.svg'
 
 export {
    navprofil,
@@ -35,5 +38,8 @@ export {
    next,
    github,
    instagram,
-   linkedin
+   linkedin,
+   redux,
+   express,
+   mongodb
 }

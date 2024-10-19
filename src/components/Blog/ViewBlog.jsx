@@ -24,7 +24,7 @@ const ViewBlog = () => {
    const [isTitleVisible, setIsTitleVisible] = useState(true);
 
    const handleBack = () => {
-      navigate(-1)
+      navigate('/blog')
    }
 
    useEffect(() => {

@@ -13,7 +13,7 @@ const CardArticel = () => {
       dispatch(fetchingArticel())
    }, [dispatch])
 
-   const getOneBlog = async (slug) => {
+   const getOneBlog = (slug) => {
       dispatch(fetchOneArticel(slug))
       navigate(`artikel/${slug}`)
    }

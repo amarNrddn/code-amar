@@ -10,7 +10,10 @@ import {
    next,
    github,
    instagram,
-   linkedin
+   linkedin,
+   mongodb,
+   redux,
+   express
 } from "../assets"
 
 export const itemsmargue = [
@@ -53,6 +56,18 @@ export const itemsmargue = [
    {
       logo: github,
       title: "Github"
+   },
+   {
+      logo: redux,
+      title: "Redux"
+   },
+   {
+      logo: express,
+      title: "Express"
+   },
+   {
+      logo: mongodb,
+      title: "MongoDB"
    },
 ]
 
