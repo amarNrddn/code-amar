@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { configs } from '../../configs'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchOneArticel, fetchingArticel } from '../../redux/blog/action'
+import ImageLazy from '../../atoms/ImageLazy'
 
 const CardArticel = () => {
    const navigate = useNavigate()
@@ -31,11 +32,9 @@ const CardArticel = () => {
                onClick={() => getOneBlog(item.slug)}
             >
                <div className="relative w-full h-28">
-                  <img
-                     src={`${configs.api_host_dev}/${item.thumbnail}`}
-                     alt="thumbnail"
-                     className="w-full h-28 rounded-md object-cover"
-                     loading="lazy"
+                  <ImageLazy
+                     image={`${configs.api_host_dev}/${item.thumbnail}`}
+                     className='w-full h-28 rounded-md object-cover'
                   />
                </div>
                <div className="mt-2">

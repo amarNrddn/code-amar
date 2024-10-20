@@ -7,6 +7,8 @@ import { useNavigate } from 'react-router-dom'
 import { useTheme } from '../../contexts/ThemeProvider'
 
 import HeaderSection from '../../atoms/HeaderSection'
+import BorderDot from '../../atoms/BorderDot'
+import ImageLazy from '../../atoms/ImageLazy'
 
 
 const Card = () => {
@@ -26,19 +28,21 @@ const Card = () => {
 
    return (
       <div className="w-full">
-         <HeaderSection className='mb-5'>
+         <HeaderSection className=''>
             Welcome to my blog! Your Source for Expert Tips and Insights!
          </HeaderSection>
+
+         <BorderDot className='my-5' />
+
          {blogs.length > 0 && (
             <>
                <div
                   className="rounded-md w-full cursor-pointer"
                   onClick={() => getOneBlog(blogs[0].slug)}
                >
-                  <img
-                     src={`${configs.api_host_dev}/${blogs[0].thumbnail}`}
-                     alt={blogs[0].title}
-                     className="w-full  rounded-md"
+                  <ImageLazy
+                     image={`${configs.api_host_dev}/${blogs[0].thumbnail}`}
+                     className='w-full  rounded-md'
                   />
                   <h2 className={`mt-2 font-bold  ${theme === 'dark' ? 'text-gray-400' : "text-gray-600"}`}>{blogs[0].title}</h2>
                   <p className="text-sm text-gray-500">
@@ -58,10 +62,9 @@ const Card = () => {
                         className="rounded-md  text-black cursor-pointer"
                         onClick={() => getOneBlog(item.slug)}
                      >
-                        <img
-                           src={`${configs.api_host_dev}/${item.thumbnail}`}
-                           alt={item.title}
-                           className="w-full h-40 object-cover rounded-md"
+                        <ImageLazy
+                           image={`${configs.api_host_dev}/${item.thumbnail}`}
+                           className='w-full h-40 object-cover rounded-md'
                         />
                         <h2 className={`mt-2 font-bold hover:text-emerald-500 line-clamp-2 ${theme === 'dark' ? "text-gray-400" : 'text-gray-600'}`}>{item.title}</h2>
                         <p className="text-sm text-gray-500 my-3">
