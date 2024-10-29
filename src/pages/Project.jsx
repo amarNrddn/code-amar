@@ -1,19 +1,31 @@
 import React from 'react'
-import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { fetchingProject } from '../redux/project/action'
+import { motion } from 'framer-motion'
+import HeaderSection from '../atoms/HeaderSection'
+import BorderDot from '../atoms/BorderDot'
+
+const Card = React.lazy(() => import('../components/Project/Card'))
 
 const Project = () => {
-   const dispatch = useDispatch()
-   const project = useSelector((state) => state.project.data)
-
-   useEffect(() => {
-      dispatch(fetchingProject())
-   }, [dispatch])
-
-   console.log(project)
    return (
-      <div>Project</div>
+      <motion.div
+         className='mt-4 md:mt-12 pb-10 w-full relative'
+         initial={{ opacity: 0, x: 100, scale: 0.8 }}
+         animate={{ opacity: 1, x: 0, scale: 1 }}
+         transition={{
+            ease: 'easeInOut',
+            scale: {
+               type: 'spring',
+               stiffness: 300,
+               damping: 20,
+            },
+         }}
+      >
+         <HeaderSection>About</HeaderSection>
+         <p className='mt-5 text-gray-500'>Showcasing my passion for technology, design, and problem-solving through code.</p>
+         <BorderDot className='my-6' />
+
+         <Card />
+      </motion.div>
    )
 }
 

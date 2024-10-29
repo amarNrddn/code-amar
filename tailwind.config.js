@@ -11,6 +11,9 @@ module.exports = {
         darkPrimary: "#333",
         darkSecondary: "#444",
       },
+      scale: {
+        '103': '1.03',  // skala kustom 1.07
+      },
       keyframes: {
         pulseDot: {
           '0%, 100%': { transform: 'scale(1)', opacity: '1' },

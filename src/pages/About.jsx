@@ -35,7 +35,7 @@ const About = () => {
             <FaCode />
             Skills
          </HeaderSection>
-         <p className='my-4'>My coding skills</p>
+         <p className='my-4 text-gray-500'>My coding skills</p>
          <MarqueeElement />
          <Border className='my-6' />
          <HeaderSection>
