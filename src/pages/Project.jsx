@@ -20,7 +20,7 @@ const Project = () => {
             },
          }}
       >
-         <HeaderSection>About</HeaderSection>
+         <HeaderSection>Projects</HeaderSection>
          <p className='mt-5 text-gray-500'>Showcasing my passion for technology, design, and problem-solving through code.</p>
          <BorderDot className='my-6' />
 
