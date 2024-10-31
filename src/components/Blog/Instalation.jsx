@@ -10,7 +10,7 @@ const Instalation = () => {
             ""
          ) : (
             <div className='mt-6'>
-               <h1 className='font-bold mb-3'>Instalation</h1>
+               <h1 className='font-bold mb-3 text-wrap'>Instalation</h1>
                <CodeSinippet code={instalation.instalation} />
             </div>
          )}

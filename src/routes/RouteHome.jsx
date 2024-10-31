@@ -6,7 +6,6 @@ import { useTheme } from '../contexts/ThemeProvider';
 
 const Home = React.lazy(() => import('../pages/Home'))
 const ViewBlog = React.lazy(() => import('../components/Blog/ViewBlog'))
-const Project = React.lazy(() => import('../pages/Project'))
 
 const RouteHome = () => {
   const location = useLocation()
@@ -40,11 +39,6 @@ const RouteHome = () => {
         <Route path='artikel/:slug' element={
           <Suspense>
             <ViewBlog fallback={<Loading />} />
-          </Suspense>
-        } />
-        <Route path='/project' element={
-          <Suspense>
-            <Project fallback={<Loading />} />
           </Suspense>
         } />
       </Routes>

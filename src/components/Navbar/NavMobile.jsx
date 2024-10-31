@@ -18,10 +18,18 @@ const NavMobile = () => {
 
    const { theme } = useTheme()
 
+   useEffect(() => {
+      const savedActivePath = localStorage.getItem('activeNavPath');
+      if (savedActivePath) {
+         setActive(savedActivePath);
+      }
+   }, [])
+
    const handleNavigation = (path) => {
       if (active !== path) {
          setActive(path)
          navigate(path)
+         localStorage.setItem('activeNavPath', path);
          setTogle(false)
       }
    }

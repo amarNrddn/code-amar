@@ -7,6 +7,7 @@ import ProfileSidebar from '../../atoms/ProfileSidebar';
 import { useNavigate } from 'react-router-dom';
 import './style.css'
 import ItemNavDestop from './ItemNavDestop';
+import { useEffect } from 'react';
 
 const NavDestop = () => {
    const navigate = useNavigate()
@@ -14,9 +15,17 @@ const NavDestop = () => {
    const [isHovered, setIsHovered] = useState(false);
    const [isActive, setIsActive] = useState('/')
 
+   useEffect(() => {
+      const savedActivePath = localStorage.getItem('activeNavPath');
+      if (savedActivePath) {
+         setIsActive(savedActivePath);
+      }
+   }, [])
+
    const handleNavActive = (path) => {
       navigate(path)
       setIsActive(path)
+      localStorage.setItem('activeNavPath', path);
    }
 
    const borderDark = theme === 'dark' ? `bg-gray-500` : `bg-gray-200`

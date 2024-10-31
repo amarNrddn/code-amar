@@ -17,7 +17,7 @@ export const startFetchingProject = () => {
 export const successFetchingProject = ({ data }) => {
    return {
       type: SUCCESS_FETCHING_PROJECT,
-      data: data
+      data
    }
 }
 

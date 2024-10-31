@@ -5,9 +5,10 @@ import { fetchingOneProject, fetchingProject } from '../../redux/project/action'
 import ImageLazy from '../../atoms/ImageLazy'
 import { configs } from '../../configs'
 import { useNavigate } from 'react-router-dom'
-import { fetchOneArticel } from '../../redux/blog/action'
+import { useTheme } from '../../contexts/ThemeProvider'
 
 const Card = () => {
+   const { theme } = useTheme()
    const dispatch = useDispatch()
    const project = useSelector((state) => state.project.data)
    const navigate = useNavigate()
@@ -17,9 +18,8 @@ const Card = () => {
    }, [dispatch])
 
    const handleToDetailProject = (slug) => {
-
       dispatch(fetchingOneProject(slug))
-      navigate(`project/:${slug}`)
+      navigate(`project/${slug}`)
    }
 
    return (
@@ -27,7 +27,7 @@ const Card = () => {
          {project.map((item, id) => (
             <div
                key={id}
-               className="bg-white shadow-lg rounded-lg overflow-hidden cursor-pointer transform transition duration-300 ease-in-out hover:scale-103 relative"
+               className={` shadow-lg rounded-lg overflow-hidden cursor-pointer transform transition duration-300 ease-in-out hover:scale-103 relative ${theme === 'dark' ? 'bg-zinc-800 hover:border-[1px] hover:border-teal-400 transform transition duration-300 ease-in-out' : 'bg-white'}`}
                onClick={() => handleToDetailProject(item.slug)}
             >
                <ImageLazy
@@ -36,7 +36,7 @@ const Card = () => {
                />
 
                <div className="p-4 flex flex-col">
-                  <h2 className="text-xl font-semibold text-gray-800">{item.title}</h2>
+                  <h2 className={`text-xl font-semibold  ${theme === 'dark' ? 'text-gray-200' : 'text-gray-800'}`}>{item.title}</h2>
                   <p className="mt-2 text-gray-600 line-clamp-2">{item.description}</p>
                   <div className="mt-4 flex flex-wrap gap-2">
                      {item.techstacks.map((tag, id) => (

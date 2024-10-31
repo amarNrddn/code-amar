@@ -1,3 +1,4 @@
 export const hiddenNav = [
-   '/artikel/'
+   '/artikel/',
+   '/project/'
 ]
