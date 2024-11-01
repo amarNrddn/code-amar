@@ -14,10 +14,10 @@ export const startFetchingProject = () => {
    }
 }
 
-export const successFetchingProject = ({ data }) => {
+export const successFetchingProject = ({ projects }) => {
    return {
       type: SUCCESS_FETCHING_PROJECT,
-      data
+      projects
    }
 }
 
@@ -34,7 +34,7 @@ export const fetchingProject = () => {
          const res = await getApi('project')
          dispatch(
             successFetchingProject({
-               data: res
+               projects: res
             })
          )
       } catch (error) {

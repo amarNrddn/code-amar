@@ -16,15 +16,31 @@ const NavDestop = () => {
    const [isActive, setIsActive] = useState('/')
 
    useEffect(() => {
-      const savedActivePath = localStorage.getItem('activeNavPath');
+      const savedActivePath = sessionStorage.getItem('activeNavPath') || localStorage.getItem('activeNavPath');
       if (savedActivePath) {
          setIsActive(savedActivePath);
+      } else {
+         setIsActive('/');
       }
-   }, [])
+   }, []);
+
+   useEffect(() => {
+      const handleBeforeUnload = () => {
+         sessionStorage.setItem('activeNavPath', isActive);
+         localStorage.removeItem('activeNavPath');
+      };
+
+      window.addEventListener('beforeunload', handleBeforeUnload);
+
+      return () => {
+         window.removeEventListener('beforeunload', handleBeforeUnload);
+      };
+   }, [isActive]);
 
    const handleNavActive = (path) => {
       navigate(path)
       setIsActive(path)
+      sessionStorage.setItem('activeNavPath', path);
       localStorage.setItem('activeNavPath', path);
    }
 

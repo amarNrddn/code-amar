@@ -19,16 +19,32 @@ const NavMobile = () => {
    const { theme } = useTheme()
 
    useEffect(() => {
-      const savedActivePath = localStorage.getItem('activeNavPath');
+      const savedActivePath = sessionStorage.getItem('activeNavPath') || localStorage.getItem('activeNavPath');
       if (savedActivePath) {
          setActive(savedActivePath);
+      } else {
+         setActive('/');
       }
-   }, [])
+   }, []);
+
+   useEffect(() => {
+      const handleBeforeUnload = () => {
+         sessionStorage.setItem('activeNavPath', active);
+         localStorage.removeItem('activeNavPath');
+      };
+
+      window.addEventListener('beforeunload', handleBeforeUnload);
+
+      return () => {
+         window.removeEventListener('beforeunload', handleBeforeUnload);
+      };
+   }, [active]);
 
    const handleNavigation = (path) => {
       if (active !== path) {
          setActive(path)
          navigate(path)
+         sessionStorage.setItem('activeNavPath', path);
          localStorage.setItem('activeNavPath', path);
          setTogle(false)
       }

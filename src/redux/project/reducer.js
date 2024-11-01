@@ -10,12 +10,13 @@ import {
 const statuslist = {
    idle: 'idle',
    process: 'procces',
-   success: 'succes',
+   success: 'success',
    error: 'error'
 }
 
 const initialState = {
    data: [],
+   project: null,
    statuslist: statuslist.idle
 }
 
@@ -24,13 +25,15 @@ export default function reducer(state = initialState, action) {
       case START_FETCHING_PROJECT:
          return { ...state, status: statuslist.process }
       case SUCCESS_FETCHING_PROJECT:
-         return { ...state, status: statuslist.success, data: action.data }
+         return { ...state, status: statuslist.success, data: action.projects }
       case ERROR_FETCHING_PROJECT:
          return { ...state, status: statuslist.error }
       case START_FETCHING_ONE_PROJECT:
          return { ...state, status: statuslist.process }
       case SUCCESS_FETCHING_ONE_PROJECT:
-         return { ...state, status: statuslist.success, data: action.project }
+         return { ...state, status: statuslist.success, project: action.project }
+      case ERROR_FETCHING_ONE_PROJECT:
+         return { ...state, status: statuslist.error }
       default:
          return state
    }
