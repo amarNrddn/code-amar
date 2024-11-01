@@ -78,7 +78,6 @@ const ViewBlog = () => {
                image={`${configs.api_host_dev}/${detailArtikel.thumbnail}`}
                className='w-full h-full rounded-md object-cover transition-transform duration-500 ease-out hover:scale-105 hover:rounded-md hover:transform hover:origin-center'
             />
-
          </div>
          <Introduction />
          <Content />

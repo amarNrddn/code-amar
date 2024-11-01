@@ -7,6 +7,13 @@ import { useEffect } from 'react'
 import { fetchingOneProject } from '../../redux/project/action'
 import { useState } from 'react'
 import Loading from '../../atoms/Loading'
+import ImageLazy from '../../atoms/ImageLazy'
+import { configs } from '../../configs'
+import BorderDot from '../../atoms/BorderDot'
+import TechStack from './TechStack'
+import Introduction from './Introduction'
+import Feature from './Feature'
+import HowToStart from './HowToStart'
 
 const ViewProject = () => {
    const { slug } = useParams()
@@ -15,6 +22,8 @@ const ViewProject = () => {
    const [isTitleVisible, setIsTitleVisible] = useState(true)
    const project = useSelector((state) => state.project.project)
    const status = useSelector((state) => state.project.status)
+
+   console.log(project)
 
    const handleBack = () => {
       navigate('/project')
@@ -44,18 +53,16 @@ const ViewProject = () => {
       return <Loading />;
    }
 
-   // Menampilkan pesan error jika gagal mengambil data
    if (status === 'error') {
       return <div>Error fetching project details.</div>;
    }
 
-   // Jika data project masih null atau undefined, tampilkan loading sementara
    if (!project) {
-      return <div>Loading...</div>;
+      return <div><Loading /></div>;
    }
 
    return (
-      <motion.div className='pt-9 pb-5 w-full'
+      <motion.div className='pt-9 pb-5 w-full relative'
          initial={{ opacity: 0, x: 100, scale: 0.8 }}
          animate={{ opacity: 1, x: 0, scale: 1 }}
          transition={{
@@ -83,6 +90,19 @@ const ViewProject = () => {
          >
             {project.title}
          </motion.h1>
+         <p className='mt-3 text-gray-500 text-base'>{project.description}</p>
+         <BorderDot className="my-5" />
+         <TechStack />
+         <div className="w-full h-36 md:h-80 overflow-hidden relative">
+            <ImageLazy
+               image={`${configs.api_host_dev}/${project.thumbnail}`}
+               className='w-full h-full rounded-md object-cover transition-transform duration-500 ease-out hover:scale-105 hover:rounded-md hover:transform hover:origin-center'
+            />
+         </div>
+
+         <Introduction />
+         <Feature />
+         <HowToStart />
       </motion.div >
    )
 }

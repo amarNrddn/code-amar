@@ -8,7 +8,7 @@ const Card = React.lazy(() => import('../components/Project/Card'))
 const Project = () => {
    return (
       <motion.div
-         className='mt-4 md:mt-12 pb-10 w-full relative'
+         className='mt-4 md:mt-12 pb-10 w-full relative '
          initial={{ opacity: 0, x: 100, scale: 0.8 }}
          animate={{ opacity: 1, x: 0, scale: 1 }}
          transition={{
