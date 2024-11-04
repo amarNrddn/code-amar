@@ -2,7 +2,7 @@ import { RiHomeSmileLine } from "react-icons/ri";
 import { TbCameraBolt } from "react-icons/tb";
 import { LuPenLine } from "react-icons/lu";
 import { TiShoppingBag } from "react-icons/ti";
-import { PiTelegramLogoBold } from "react-icons/pi";
+import { LuLayoutDashboard } from "react-icons/lu";
 
 export const navItems = [
    {
@@ -26,8 +26,8 @@ export const navItems = [
       navigation: 'Projects'
    },
    {
-      icon: <PiTelegramLogoBold />,
-      path: '/contact',
-      navigation: 'Contact'
+      icon: <LuLayoutDashboard />,
+      path: '/dashboard',
+      navigation: 'Dashboard'
    },
 ]

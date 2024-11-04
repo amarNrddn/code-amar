@@ -1,9 +1,11 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { github } from '../../assets'
+import { useTheme } from '../../contexts/ThemeProvider'
 
 const TechStack = () => {
    const techStack = useSelector((state) => state.project.project)
+   const { theme } = useTheme()
 
    return (
       <div className="w-full flex justify-between items-center mb-5">
@@ -22,12 +24,12 @@ const TechStack = () => {
             <a className='flex items-center gap-2' href={techStack.linksourcode} target='_blank' rel="noreferrer">
                <img
                   src={github}
-                  className='w-5'
+                  className={`w-5 ${theme === 'dark' ? 'rounded-full bg-white' : ''}`}
                   alt="github"
                />
-            <p className='text-gray-500 text-sm'>Source Code</p>
-         </a>
-      </button>
+               <p className='text-gray-500 text-sm'>Source Code</p>
+            </a>
+         </button>
       </div >
    )
 }

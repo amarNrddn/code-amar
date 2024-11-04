@@ -1,0 +1,21 @@
+/* src/App.css atau file CSS lain */
+.color-empty {
+   fill: #ebedf0; /* Warna untuk tidak ada kontribusi */
+ }
+ 
+ .color-scale-1 {
+   fill: #c6e48b; /* Warna untuk 1 kontribusi */
+ }
+ 
+ .color-scale-2 {
+   fill: #7bc96f; /* Warna untuk 2 kontribusi */
+ }
+ 
+ .color-scale-3 {
+   fill: #239a3b; /* Warna untuk 3 kontribusi */
+ }
+ 
+ .color-scale-4 {
+   fill: #196127; /* Warna untuk 4 kontribusi atau lebih */
+ }
+ 
