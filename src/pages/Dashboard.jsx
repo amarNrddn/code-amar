@@ -43,7 +43,7 @@ const Dashboard = () => {
             <TiFlowMerge />
             Roadmap
          </HeaderSection>
-         <p className='my-4 text-gray-500'>Learning path recomendation and free course playlist</p>
+         <p className='my-4 text-gray-500'>Recommended learning paths and free course playlists based on what I've learned are suitable for beginners to intermediates.</p>
 
          <Roadmap />
       </motion.div>

@@ -18,11 +18,5 @@ export const itemServices = [
       title: "UI/UX Enthusiast",
       des: "I am very interested in UI/UX and I am still learning about it.",
       tech: 'design'
-   },
-   // {
-   //    thumbnail: "",
-   //    title: "",
-   //    des: "",
-   // tech: 'design'
-   // },
+   }
 ]

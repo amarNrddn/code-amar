@@ -70,21 +70,3 @@ export const itemsmargue = [
       title: "MongoDB"
    },
 ]
-
-export const socialMedia = [
-   {
-      icon: instagram,
-      title: "Instagram",
-      link: "https://www.instagram.com/amarrnrdn/"
-   },
-   {
-      icon: linkedin,
-      title: "Linkedin",
-      link: "https://www.linkedin.com/in/amar-nuruddin-592282257/"
-   },
-   {
-      icon: github,
-      title: "Github",
-      link: "https://github.com/amarNrddn"
-   }
-]

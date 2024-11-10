@@ -4,9 +4,9 @@ module.exports = {
   content: ["./src/**/*.{html,js,jsx}"],
   theme: {
     extend: {
-      // fontFamily: {
-      //   roboto: ['Roboto', 'sans-serif']
-      // },
+      backgroundImage: {
+        'instagram-gradient': 'linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5)',
+      },
       colors: {
         darkPrimary: "#333",
         darkSecondary: "#444",
