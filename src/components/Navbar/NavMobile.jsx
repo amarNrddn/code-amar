@@ -1,59 +1,41 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+
+import React, { useEffect, useRef, useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 import Profile from '../../atoms/Profile';
 import TogleTheme from '../../atoms/TogleTheme';
 
 import { HamburgerMenuIcon, Cross2Icon } from '@radix-ui/react-icons';
 
-import { navItems } from '../../contans/itemsNav'
+import { navItems } from '../../contans/itemsNav';
 import { useTheme } from '../../contexts/ThemeProvider';
 import { themeDark, themeLight } from '../../contans/styles';
 
 const NavMobile = () => {
-   const navigate = useNavigate()
+   const navigate = useNavigate();
+   const location = useLocation();
    const [togle, setTogle] = useState(false);
-   const [active, setActive] = useState('/')
+   const [active, setActive] = useState(location.pathname);
    const navRef = useRef(null);
 
-   const { theme } = useTheme()
+   const { theme } = useTheme();
 
    useEffect(() => {
-      const savedActivePath = sessionStorage.getItem('activeNavPath') || localStorage.getItem('activeNavPath');
-      if (savedActivePath) {
-         setActive(savedActivePath);
-      } else {
-         setActive('/');
-      }
-   }, []);
-
-   useEffect(() => {
-      const handleBeforeUnload = () => {
-         sessionStorage.setItem('activeNavPath', active);
-         localStorage.removeItem('activeNavPath');
-      };
-
-      window.addEventListener('beforeunload', handleBeforeUnload);
-
-      return () => {
-         window.removeEventListener('beforeunload', handleBeforeUnload);
-      };
-   }, [active]);
+      setActive(location.pathname);
+      localStorage.setItem('activeNavPath', location.pathname);
+   }, [location.pathname]);
 
    const handleNavigation = (path) => {
       if (active !== path) {
-         setActive(path)
-         navigate(path)
-         sessionStorage.setItem('activeNavPath', path);
-         localStorage.setItem('activeNavPath', path);
-         setTogle(false)
+         navigate(path);
+         setTogle(false);
       }
-   }
+   };
 
    useEffect(() => {
       const handleClickOutside = (event) => {
          if (navRef.current && !navRef.current.contains(event.target)) {
-            setTogle(false); // Menutup navbar jika klik di luar
+            setTogle(false);
          }
       };
       document.addEventListener('mousedown', handleClickOutside);
@@ -62,8 +44,7 @@ const NavMobile = () => {
       };
    }, []);
 
-
-   const containerNav = theme === 'dark' ? themeDark.className : themeLight.className
+   const containerNav = theme === 'dark' ? themeDark.className : themeLight.className;
 
    return (
       <nav className={`px-3 py-3 ${containerNav} md:hidden`}>
@@ -86,14 +67,15 @@ const NavMobile = () => {
 
             <div
                ref={navRef}
-               className={`${togle ? "flex " : "hidden"} px-3 z-50 bg-primary fixed top-16 left-0  my-2 min-w-full shadow-md navtrantition ${theme === 'dark' ? `${themeDark.className}` : `${themeLight.className}`}`}>
-               {togle ? (
+               className={`${togle ? "flex " : "hidden"} px-3 z-50 bg-primary fixed top-16 left-0 my-2 min-w-full shadow-md navtrantition ${theme === 'dark' ? `${themeDark.className}` : `${themeLight.className}`}`}
+            >
+               {togle && (
                   <div className='w-full'>
                      <ul>
                         {navItems.map((item, i) => (
                            <li
                               key={i}
-                              className={`text-lg flex items-center gap-2 mb-4 pl-2 ${theme === 'dark' ? active === item.path ? 'bg-darkPrimary py-2 rounded-md' : '' : active === item.path ? 'bg-gray-200 py-2 rounded-md' : ''} `}
+                              className={`text-lg flex items-center gap-2 mb-4 pl-2 ${theme === 'dark' ? active === item.path ? 'bg-darkPrimary py-2 rounded-md' : '' : active === item.path ? 'bg-gray-200 py-2 rounded-md' : ''}`}
                               onClick={() => handleNavigation(item.path)}
                            >
                               <p className='text-2xl font-semibold'>{item.icon}</p>
@@ -102,11 +84,11 @@ const NavMobile = () => {
                         ))}
                      </ul>
                   </div>
-               ) : ("")}
+               )}
             </div>
          </div>
       </nav>
-   )
-}
+   );
+};
 
-export default NavMobile
+export default NavMobile;
