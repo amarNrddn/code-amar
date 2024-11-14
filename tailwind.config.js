@@ -9,6 +9,7 @@ module.exports = {
       },
       colors: {
         darkPrimary: "#333",
+        'neutral-700': '#4A5568',
         darkSecondary: "#444",
       },
       scale: {

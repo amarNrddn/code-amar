@@ -9,8 +9,6 @@ import {
    bootstraps,
    next,
    github,
-   instagram,
-   linkedin,
    mongodb,
    redux,
    express
