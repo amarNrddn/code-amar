@@ -1,14 +1,16 @@
 import React from 'react';
+import { useTheme } from '../../contexts/ThemeProvider';
 
 export default function WebContainer({ children }) {
+  const { theme } = useTheme()
   return (
-    <div className="h-36 w-52 overflow-hidden rounded-lg border dark:border-neutral-700">
-      <div className="flex items-center justify-start gap-1 border-b bg-neutral-200 px-2 py-1 dark:border-neutral-700 dark:bg-neutral-900">
+    <div className={`h-36 w-52 overflow-hidden rounded-lg border ${theme === 'dark' ? 'border-neutral-700' : ''}`}>
+      <div className={`flex items-center justify-start gap-1 border-b  px-2 py-1 dark:border-neutral-700 ${theme === 'dark' ? 'bg-neutral-900' : 'bg-neutral-200'}`}>
         {[1, 2, 3].map(item => (
-          <div key={item} className="h-2 w-2 rounded-full border border-neutral-400 dark:border-neutral-700" />
+          <div key={item} className={`h-2 w-2 rounded-full border ${theme === 'dark' ? 'border-neutral-700' : 'border-neutral-400'}`} />
         ))}
       </div>
-      <div className="flex justify-center gap-2 bg-neutral-100 p-3 pb-0 dark:bg-neutral-950">{children}</div>
+      <div className={`flex justify-center gap-2 ${theme === 'dark' ? 'bg-neutral-950' : 'bg-neutral-100'}  p-3 pb-0`}>{children}</div>
     </div>
   );
 }
